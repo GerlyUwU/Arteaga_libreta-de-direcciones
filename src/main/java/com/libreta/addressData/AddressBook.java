@@ -1,4 +1,4 @@
-package com.libreta;
+package com.libreta.addressData;
 //vamos a aplicar el patron  singleton en esta clase
 public class AddressBook {
     private static AddressBook instancia; 

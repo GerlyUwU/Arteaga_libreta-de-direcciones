@@ -1,5 +1,4 @@
-package com.libreta;
-
+package com.libreta.addressData;
 public class AddressEntry {
     
 }
