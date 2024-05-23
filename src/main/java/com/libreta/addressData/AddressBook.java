@@ -1,7 +1,8 @@
 package com.libreta.addressData;
 
-//vamos a aplicar el patron  singleton en esta clase
-
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,12 +25,6 @@ public class AddressBook {
         return instancia;
     }
 
-    // ejemplo de metodo que podria tener la clase con la
-    // restriccion de singleton:
-    public void mostrarMensaje() {
-        System.out.println("hola desde singleton!");
-
-    }
 
     public List<AddressEntry> getAddressEntryList() {
         return addressEntryList;
@@ -39,6 +34,7 @@ public class AddressBook {
 
     }
 
+    // que hace este metodo? supongo que solo se puede usar desde esta clase
     public void add(AddressEntry addressEntry) {
         addressEntryList.add(addressEntry);
     }
@@ -49,6 +45,22 @@ public class AddressBook {
 
     public void find() {
 
+    }
+
+    public void guardarInformacion(List<AddressEntry> addressEntryList) {
+        try {
+            BufferedWriter escritor = new BufferedWriter(new FileWriter("directorio.txt", true));
+            for (AddressEntry addressEntry : addressEntryList) {
+                escritor.write(addressEntry.getFirstName() + "\t" +
+                        addressEntry.getLastName() + "\t" + addressEntry.getStreet()
+                        + "\t" + addressEntry.getState() + "\t" + String.valueOf(addressEntry.getZip())
+                        + "\t" + addressEntry.getPhone() + "\t" + addressEntry.getEmail());
+                escritor.newLine();
+            }
+            escritor.close();
+        } catch (IOException e) {
+            System.out.println("error al escribir en el archivo " + e.getMessage());
+        }
     }
 
 }

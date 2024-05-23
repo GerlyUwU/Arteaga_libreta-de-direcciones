@@ -55,19 +55,28 @@ public class AddressEntry {
     public void setState(String state) {
         this.state = state;
     }
+    public int getZip() {
+        return zip;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 
     @Override
     public String toString() {
         return "" +
-        "First name ='" + firstName + '\'' +
-        ", last name='" + lastName + '\'' +
-        ", street ='" + street + '\'' +
-        ", state ='" + state + '\'' +
-        ", zip =" + zip +
-        ", phone ='" + phone + '\'' +
-        ", email ='" + email + '\'' ;
+                "First name ='" + firstName + '\'' +
+                ", last name='" + lastName + '\'' +
+                ", street ='" + street + '\'' +
+                ", state ='" + state + '\'' +
+                ", zip =" + zip +
+                ", phone ='" + phone + '\'' +
+                ", email ='" + email + '\'';
     }
-
-    
 
 }
