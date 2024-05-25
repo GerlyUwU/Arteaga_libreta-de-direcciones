@@ -48,18 +48,26 @@ public class AddressBook {
     }
 
     public void guardarInformacion(List<AddressEntry> addressEntryList) {
-        try {
-            BufferedWriter escritor = new BufferedWriter(new FileWriter("directorio.txt", true));
+        try (BufferedWriter escritor = new BufferedWriter(new FileWriter("directorio.txt", true))) {
             for (AddressEntry addressEntry : addressEntryList) {
-                escritor.write(addressEntry.getFirstName() + "\t" +
-                        addressEntry.getLastName() + "\t" + addressEntry.getStreet()
-                        + "\t" + addressEntry.getState() + "\t" + String.valueOf(addressEntry.getZip())
-                        + "\t" + addressEntry.getPhone() + "\t" + addressEntry.getEmail());
+                escritor.write("First Name: " + addressEntry.getFirstName());
                 escritor.newLine();
+                escritor.write("Last Name: " + addressEntry.getLastName());
+                escritor.newLine();
+                escritor.write("Street: " + addressEntry.getStreet());
+                escritor.newLine();
+                escritor.write("State: " + addressEntry.getState());
+                escritor.newLine();
+                escritor.write("ZIP: " + addressEntry.getZip());
+                escritor.newLine();
+                escritor.write("Phone: " + addressEntry.getPhone());
+                escritor.newLine();
+                escritor.write("Email: " + addressEntry.getEmail());
+                escritor.newLine();
+                escritor.newLine();  //añadimos una linea en blanco entre entradas
             }
-            escritor.close();
         } catch (IOException e) {
-            System.out.println("error al escribir en el archivo " + e.getMessage());
+            System.out.println("Error al escribir en el archivo: " + e.getMessage());
         }
     }
 
