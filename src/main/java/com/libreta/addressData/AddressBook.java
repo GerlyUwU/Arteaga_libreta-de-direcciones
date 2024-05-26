@@ -1,6 +1,8 @@
 package com.libreta.addressData;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -40,7 +42,25 @@ public class AddressBook {
     }
 
     public void readFromFile(String filename) {
-
+      try (BufferedReader lector = new BufferedReader(new FileReader(filename))) {
+            String linea;
+            int numeroContacto = 1; // Variable para enumerar los contactos
+            boolean primerNombre = true; // Flag para indicar si estamos en el primer nombre de un contacto
+            while ((linea = lector.readLine()) != null) {
+                if (primerNombre && !linea.isEmpty()) {
+                    System.out.println(numeroContacto + ". " + linea);
+                    primerNombre = false; // Cambiar el flag después de mostrar el primer nombre
+                } else {
+                    System.out.println(linea);
+                }
+                if (linea.isEmpty()) {
+                    primerNombre = true; // Restaurar el flag al encontrar una línea en blanco
+                    numeroContacto++; // Incrementar el número de contacto al encontrar una línea en blanco
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }
     }
 
     public void find() {

@@ -55,6 +55,7 @@ public class AddressEntry {
     public void setState(String state) {
         this.state = state;
     }
+
     public int getZip() {
         return zip;
     }

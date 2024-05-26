@@ -1,23 +1,19 @@
 package com.libreta.address;
 
-import java.util.List;
-
-import com.libreta.addressData.AddressBook;
-import com.libreta.addressData.AddressEntry;
+import java.util.Scanner;
 
 public class AddressBookApplication {
     public static void main(String[] args) {
-        AddressBook libreta = AddressBook.getInstancia();
-        libreta.add(new AddressEntry("HECTOR LUIS",
-                "ARTEAGA BERNAL", "CALLE EL DESENGAÑO", "VERACRUZ", 96980,
-                "9612371191", "ARTEAGA.HECTOR@GMAIL.COM"));
-                
+        Scanner teclado = new Scanner(System.in);
+        char option;
 
-        Menu.displayMenu();
-
-
-   List<AddressEntry> direcciones =libreta.getAddressEntryList();
-   libreta.guardarInformacion(direcciones);
+        do { 
+            Menu.displayMenu();
+            option = teclado.next().charAt(0);
+            Menu.menuInAction(option);
+        } while (option != 'f');
+        
+       
     }
 
 }
