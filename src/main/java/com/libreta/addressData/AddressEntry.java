@@ -22,15 +22,15 @@ public class AddressEntry {
      * Parameterized constructor to initialize all fields.
      *
      * @param firstName the first name of the contact
-     * @param lastName the last name of the contact
-     * @param street the street address of the contact
-     * @param state the state of the contact
-     * @param zip the ZIP code of the contact
-     * @param phone the phone number of the contact
-     * @param email the email address of the contact
+     * @param lastName  the last name of the contact
+     * @param street    the street address of the contact
+     * @param state     the state of the contact
+     * @param zip       the ZIP code of the contact
+     * @param phone     the phone number of the contact
+     * @param email     the email address of the contact
      */
     public AddressEntry(String firstName, String lastName, String street, String state, int zip, String phone,
-                        String email) {
+            String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.street = street;
@@ -174,11 +174,11 @@ public class AddressEntry {
     @Override
     public String toString() {
         return "First name ='" + firstName + '\'' +
-               ", last name='" + lastName + '\'' +
-               ", street ='" + street + '\'' +
-               ", state ='" + state + '\'' +
-               ", zip =" + zip +
-               ", phone ='" + phone + '\'' +
-               ", email ='" + email + '\'';
+                ", last name='" + lastName + '\'' +
+                ", street ='" + street + '\'' +
+                ", state ='" + state + '\'' +
+                ", zip =" + zip +
+                ", phone ='" + phone + '\'' +
+                ", email ='" + email + '\'';
     }
 }

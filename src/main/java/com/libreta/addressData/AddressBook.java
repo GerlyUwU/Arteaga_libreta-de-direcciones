@@ -103,7 +103,8 @@ public class AddressBook {
      * Finds an address entry based on the last name.
      *
      * @param lastName the last name to search for
-     * @return the first AddressEntry that matches the last name, or null if none found
+     * @return the first AddressEntry that matches the last name, or null if none
+     *         found
      */
     public AddressEntry find(String lastName) {
         return addressEntryList.stream()
@@ -130,7 +131,7 @@ public class AddressBook {
     /**
      * Writes a single address entry to the provided BufferedWriter.
      *
-     * @param escritor the BufferedWriter to write to
+     * @param escritor     the BufferedWriter to write to
      * @param addressEntry the AddressEntry object to be written
      * @throws IOException if an I/O error occurs
      */
@@ -149,6 +150,6 @@ public class AddressBook {
         escritor.newLine();
         escritor.write("Email: " + addressEntry.getEmail());
         escritor.newLine();
-        escritor.newLine();  // Add a blank line between entries
+        escritor.newLine(); // Add a blank line between entries
     }
 }
