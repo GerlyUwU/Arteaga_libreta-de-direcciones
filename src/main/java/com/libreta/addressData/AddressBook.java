@@ -9,23 +9,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Singleton class representing an address book.
+ * Clase Singleton que representa una libreta de direcciones.
  */
 public class AddressBook {
     private static AddressBook instancia;
     private List<AddressEntry> addressEntryList;
 
     /**
-     * Private constructor to avoid external instantiation.
+     * Constructor privado para evitar la instanciación externa.
      */
     private AddressBook() {
         addressEntryList = new ArrayList<>();
     }
 
     /**
-     * Returns the unique instance of the AddressBook class.
+     * Devuelve la instancia única de la clase AddressBook.
      *
-     * @return the singleton instance of AddressBook
+     * @return la instancia singleton de AddressBook
      */
     public static AddressBook getInstancia() {
         if (instancia == null) {
@@ -35,38 +35,41 @@ public class AddressBook {
     }
 
     /**
-     * Gets the list of address entries.
+     * Obtiene la lista de entradas de direcciones.
      *
-     * @return the list of AddressEntry objects
+     * @return la lista de objetos AddressEntry
      */
     public List<AddressEntry> getAddressEntryList() {
         return addressEntryList;
     }
 
     /**
-     * Removes an address entry based on the last name.
+     * Elimina una entrada de dirección basada en el apellido.
      *
-     * @param lastName the last name of the entry to be removed
+     * @param lastName el apellido de la entrada a eliminar
      */
     public void remove(String lastName) {
         addressEntryList.removeIf(entry -> entry.getLastName().equalsIgnoreCase(lastName));
+        guardarInformacion(addressEntryList);
     }
 
     /**
-     * Adds a new address entry to the address book.
+     * Agrega una nueva entrada de dirección a la libreta de direcciones.
      *
-     * @param addressEntry the AddressEntry object to be added
+     * @param addressEntry el objeto AddressEntry a agregar
      */
     public void add(AddressEntry addressEntry) {
         addressEntryList.add(addressEntry);
+        guardarInformacion(addressEntryList);
     }
 
     /**
-     * Reads address entries from a file and populates the address book.
+     * Lee las entradas de direcciones de un archivo y las carga en la libreta.
      *
-     * @param filename the name of the file to read from
+     * @param filename el nombre del archivo del cual leer
      */
     public void readFromFile(String filename) {
+        addressEntryList.clear(); // Limpiar las entradas existentes antes de leer del archivo
         try (BufferedReader lector = new BufferedReader(new FileReader(filename))) {
             String linea;
             AddressEntry addressEntry = new AddressEntry();
@@ -90,7 +93,7 @@ public class AddressBook {
                     addressEntry = new AddressEntry();
                 }
             }
-            // Add the last entry if the file does not end with a blank line
+            // Agregar la última entrada si el archivo no termina con una línea en blanco
             if (addressEntry.getFirstName() != null) {
                 addressEntryList.add(addressEntry);
             }
@@ -100,11 +103,10 @@ public class AddressBook {
     }
 
     /**
-     * Finds an address entry based on the last name.
+     * Encuentra una entrada de dirección basada en el apellido.
      *
-     * @param lastName the last name to search for
-     * @return the first AddressEntry that matches the last name, or null if none
-     *         found
+     * @param lastName el apellido a buscar
+     * @return la primera AddressEntry que coincide con el apellido, o null si no se encuentra
      */
     public AddressEntry find(String lastName) {
         return addressEntryList.stream()
@@ -114,12 +116,12 @@ public class AddressBook {
     }
 
     /**
-     * Saves the address entries to a file.
+     * Guarda las entradas de direcciones en un archivo.
      *
-     * @param addressEntryList the list of AddressEntry objects to be saved
+     * @param addressEntryList la lista de objetos AddressEntry a guardar
      */
     public void guardarInformacion(List<AddressEntry> addressEntryList) {
-        try (BufferedWriter escritor = new BufferedWriter(new FileWriter("directorio.txt", true))) {
+        try (BufferedWriter escritor = new BufferedWriter(new FileWriter("directorio.txt"))) {
             for (AddressEntry addressEntry : addressEntryList) {
                 escribirEntrada(escritor, addressEntry);
             }
@@ -129,11 +131,11 @@ public class AddressBook {
     }
 
     /**
-     * Writes a single address entry to the provided BufferedWriter.
+     * Escribe una sola entrada de dirección en el BufferedWriter proporcionado.
      *
-     * @param escritor     the BufferedWriter to write to
-     * @param addressEntry the AddressEntry object to be written
-     * @throws IOException if an I/O error occurs
+     * @param escritor el BufferedWriter en el cual escribir
+     * @param addressEntry el objeto AddressEntry a escribir
+     * @throws IOException si ocurre un error de I/O
      */
     private void escribirEntrada(BufferedWriter escritor, AddressEntry addressEntry) throws IOException {
         escritor.write("First Name: " + addressEntry.getFirstName());
@@ -150,6 +152,6 @@ public class AddressBook {
         escritor.newLine();
         escritor.write("Email: " + addressEntry.getEmail());
         escritor.newLine();
-        escritor.newLine(); // Add a blank line between entries
+        escritor.newLine(); // Añadir una línea en blanco entre entradas
     }
 }

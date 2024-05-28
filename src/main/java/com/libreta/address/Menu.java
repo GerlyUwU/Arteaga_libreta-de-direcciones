@@ -1,6 +1,5 @@
 package com.libreta.address;
 
-import java.util.List;
 import java.util.Scanner;
 
 import com.libreta.addressData.AddressBook;
@@ -19,7 +18,7 @@ public class Menu {
      */
     public static void displayMenu() {
         System.out.println("===================================================\n");
-        System.out.println("Elige la opción del menu:\n");
+        System.out.println("Elige la opción del menú:\n");
         System.out.println("a) Cargar de archivo");
         System.out.println("b) Agregar");
         System.out.println("c) Eliminar");
@@ -35,27 +34,50 @@ public class Menu {
      * @param option La opción seleccionada del menú.
      */
     public static void menuInAction(char option) {
+        AddressBook libreta = AddressBook.getInstancia();
         switch (option) {
             case 'a':
-                System.out.println("Ingresa el nombre del archivo");
+                System.out.println("Ingresa el nombre del archivo:");
                 filename = input.nextLine();
+                libreta.readFromFile(filename);
                 break;
             case 'b':
                 entradaDatos();
-            case 'e':
-                AddressBook libreta = AddressBook.getInstancia();
-                if (filename == null) {
-                    System.out.println("primero ingrese el nombre del documento");
-                    return;
+                break;
+            case 'c':
+                System.out.println("Ingresa el apellido del contacto a eliminar:");
+                String lastNameToDelete = input.nextLine();
+                libreta.remove(lastNameToDelete);
+                break;
+            case 'd':
+                System.out.println("Ingresa el apellido del contacto a buscar:");
+                String lastNameToFind = input.nextLine();
+                AddressEntry foundEntry = libreta.find(lastNameToFind);
+                if (foundEntry != null) {
+                    System.out.println(foundEntry);
                 } else {
+                    System.out.println("Contacto no encontrado.");
+                }
+                break;
+            case 'e':
+                if (filename != null) {
+
                     libreta.readFromFile(filename);
+
+                    // Itera sobre la lista de entradas y las muestra en la consola
+                    for (AddressEntry entry : libreta.getAddressEntryList()) {
+                        System.out.println(entry);
+                    }
+
+                } else {
+                    System.out.println("El archivo no fue ingresado, intentalo nuevamente");
                 }
                 break;
             case 'f':
                 despedida();
                 break;
             default:
-                System.out.println("Ese caracter no coincide con ninguna de nuestras opciones");
+                System.out.println("Ese carácter no coincide con ninguna de nuestras opciones.");
                 break;
         }
     }
@@ -73,42 +95,25 @@ public class Menu {
      * libreta de direcciones.
      */
     public static void entradaDatos() {
-        String firstName;
-        String lastName;
-        String street;
-        String state;
-        int zip;
-        String phone;
-        String email;
-
-        System.out.println("\n");
         System.out.println("Primer nombre: ");
-        firstName = input.nextLine();
-        System.out.println("\n");
+        String firstName = input.nextLine();
         System.out.println("Apellido: ");
-        lastName = input.nextLine();
-        System.out.println("\n");
+        String lastName = input.nextLine();
         System.out.println("Calle: ");
-        street = input.nextLine();
-        System.out.println("\n");
+        String street = input.nextLine();
         System.out.println("Estado: ");
-        state = input.nextLine();
-        System.out.println("\n");
+        String state = input.nextLine();
         System.out.println("ZIP: ");
-        zip = input.nextInt();
-        System.out.println("\n");
-        System.out.println("Telefono: ");
-        phone = input.nextLine();
-        System.out.println("\n");
+        int zip = input.nextInt();
+        input.nextLine(); // Consumir el carácter de nueva línea
+        System.out.println("Teléfono: ");
+        String phone = input.nextLine();
         System.out.println("Email: ");
-        email = input.nextLine();
-        System.out.println("\n");
+        String email = input.nextLine();
 
-        AddressEntry nuevaEntrada = new AddressEntry(firstName, lastName, street,
-                state, zip, phone, email);
+        AddressEntry nuevaEntrada = new AddressEntry(firstName, lastName, street, state, zip, phone, email);
         AddressBook libreta = AddressBook.getInstancia();
         libreta.add(nuevaEntrada);
-        List<AddressEntry> direcciones = libreta.getAddressEntryList();
-        libreta.guardarInformacion(direcciones);
+        libreta.guardarInformacion(libreta.getAddressEntryList());
     }
 }

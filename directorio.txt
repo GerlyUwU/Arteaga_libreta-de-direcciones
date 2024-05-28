@@ -1,9 +1,16 @@
-
 First Name: gerly daniel 
-Last Name: arteaga bernal
-Street: nayarit
-State: Nayarit 
+Last Name: arteaga bernal 
+Street: NAYARIT 
+State: VERACRUZ 
 ZIP: 96980
-Phone: 
+Phone: 9231283191
 Email: arteaga.bernal3@gmail.com
+
+First Name: sebastian de jesus 
+Last Name: hernandez hernandez 
+Street: nicaragua 
+State: VERACRUZ 
+ZIP: 96982
+Phone: 92182930489
+Email: sebaghi@gmail.com
 
