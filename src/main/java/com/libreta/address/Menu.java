@@ -45,9 +45,9 @@ public class Menu {
                 entradaDatos();
                 break;
             case 'c':
-                System.out.println("Ingresa el apellido del contacto a eliminar:");
-                String lastNameToDelete = input.nextLine();
-                libreta.remove(lastNameToDelete);
+                System.out.println("Ingresa el apellido de la entrada a eliminar: ");
+                String lastName = input.nextLine();
+                libreta.remove(filename,lastName);
                 break;
             case 'd':
                 System.out.println("Ingresa el apellido del contacto a buscar:");

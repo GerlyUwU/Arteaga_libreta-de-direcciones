@@ -45,12 +45,32 @@ public class AddressBook {
 
     /**
      * Elimina una entrada de dirección basada en el apellido.
-     *
+     * 
+     * @param filename el nombre del archivo del cual leer
      * @param lastName el apellido de la entrada a eliminar
      */
-    public void remove(String lastName) {
-        addressEntryList.removeIf(entry -> entry.getLastName().equalsIgnoreCase(lastName));
-        guardarInformacion(addressEntryList);
+    public void remove(String filename, String lastName) {
+        // revisar si el nombre dle archivo esta vacio
+        if (filename != null) {
+            // Leer los datos desde el archivo
+            readFromFile(filename);
+
+            // Eliminar las entradas con el apellido especificado
+            boolean removed = addressEntryList.removeIf(entry -> entry.getLastName().equalsIgnoreCase(lastName));
+
+            // Verificar si se ha eliminado alguna entrada
+            if (removed) {
+                System.out.println("Entradas con el apellido '" + lastName + "' han sido eliminadas.");
+            } else {
+                System.out.println("No se encontraron entradas con el apellido '" + lastName + "'.");
+            }
+
+            // Guardar la lista actualizada de nuevo en el archivo
+            guardarInformacion(addressEntryList);
+        } else {
+            System.out.println("No se ha ingresado el nombre del archivo");
+        }
+
     }
 
     /**
@@ -106,7 +126,8 @@ public class AddressBook {
      * Encuentra una entrada de dirección basada en el apellido.
      *
      * @param lastName el apellido a buscar
-     * @return la primera AddressEntry que coincide con el apellido, o null si no se encuentra
+     * @return la primera AddressEntry que coincide con el apellido, o null si no se
+     *         encuentra
      */
     public AddressEntry find(String lastName) {
         return addressEntryList.stream()
@@ -133,7 +154,7 @@ public class AddressBook {
     /**
      * Escribe una sola entrada de dirección en el BufferedWriter proporcionado.
      *
-     * @param escritor el BufferedWriter en el cual escribir
+     * @param escritor     el BufferedWriter en el cual escribir
      * @param addressEntry el objeto AddressEntry a escribir
      * @throws IOException si ocurre un error de I/O
      */
