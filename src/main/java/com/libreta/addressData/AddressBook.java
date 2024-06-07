@@ -43,6 +43,10 @@ public class AddressBook {
         return addressEntryList;
     }
 
+    public void setAddressEntryList(List<AddressEntry> lista){
+        lista = addressEntryList;
+    }
+
     /**
      * Elimina una entrada de dirección basada en el apellido.
      * 

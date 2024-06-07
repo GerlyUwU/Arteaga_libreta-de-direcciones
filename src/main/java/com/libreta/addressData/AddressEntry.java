@@ -1,7 +1,7 @@
 package com.libreta.addressData;
 
 /**
- * Class representing an address entry in the address book.
+ * Clase que representa una entrada de dirección en la libreta de direcciones.
  */
 public class AddressEntry {
     private String firstName;
@@ -13,21 +13,21 @@ public class AddressEntry {
     private String email;
 
     /**
-     * Default constructor.
+     * Constructor por defecto.
      */
     public AddressEntry() {
     }
 
     /**
-     * Parameterized constructor to initialize all fields.
+     * Constructor parametrizado para inicializar todos los campos.
      *
-     * @param firstName the first name of the contact
-     * @param lastName  the last name of the contact
-     * @param street    the street address of the contact
-     * @param state     the state of the contact
-     * @param zip       the ZIP code of the contact
-     * @param phone     the phone number of the contact
-     * @param email     the email address of the contact
+     * @param firstName el nombre del contacto
+     * @param lastName  el apellido del contacto
+     * @param street    la dirección del contacto
+     * @param state     el estado del contacto
+     * @param zip       el código ZIP del contacto
+     * @param phone     el número de teléfono del contacto
+     * @param email     el correo electrónico del contacto
      */
     public AddressEntry(String firstName, String lastName, String street, String state, int zip, String phone,
             String email) {
@@ -41,144 +41,144 @@ public class AddressEntry {
     }
 
     /**
-     * Sets the ZIP code.
+     * Devuelve el nombre.
      *
-     * @param zip the new ZIP code
-     */
-    public void setZip(int zip) {
-        this.zip = zip;
-    }
-
-    /**
-     * Sets the phone number.
-     *
-     * @param phone the new phone number
-     */
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    /**
-     * Sets the email address.
-     *
-     * @param email the new email address
-     */
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    /**
-     * Gets the first name.
-     *
-     * @return the first name
+     * @return el nombre
      */
     public String getFirstName() {
         return firstName;
     }
 
     /**
-     * Sets the first name.
+     * Establece el nombre.
      *
-     * @param firstName the new first name
+     * @param firstName el nuevo nombre
      */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
     /**
-     * Gets the last name.
+     * Devuelve el apellido.
      *
-     * @return the last name
+     * @return el apellido
      */
     public String getLastName() {
         return lastName;
     }
 
     /**
-     * Sets the last name.
+     * Establece el apellido.
      *
-     * @param lastName the new last name
+     * @param lastName el nuevo apellido
      */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
     /**
-     * Gets the street address.
+     * Devuelve la dirección.
      *
-     * @return the street address
+     * @return la dirección
      */
     public String getStreet() {
         return street;
     }
 
     /**
-     * Sets the street address.
+     * Establece la dirección.
      *
-     * @param street the new street address
+     * @param street la nueva dirección
      */
     public void setStreet(String street) {
         this.street = street;
     }
 
     /**
-     * Gets the state.
+     * Devuelve el estado.
      *
-     * @return the state
+     * @return el estado
      */
     public String getState() {
         return state;
     }
 
     /**
-     * Sets the state.
+     * Establece el estado.
      *
-     * @param state the new state
+     * @param state el nuevo estado
      */
     public void setState(String state) {
         this.state = state;
     }
 
     /**
-     * Gets the ZIP code.
+     * Devuelve el código ZIP.
      *
-     * @return the ZIP code
+     * @return el código ZIP
      */
     public int getZip() {
         return zip;
     }
 
     /**
-     * Gets the phone number.
+     * Establece el código ZIP.
      *
-     * @return the phone number
+     * @param zip el nuevo código ZIP
+     */
+    public void setZip(int zip) {
+        this.zip = zip;
+    }
+
+    /**
+     * Devuelve el número de teléfono.
+     *
+     * @return el número de teléfono
      */
     public String getPhone() {
         return phone;
     }
 
     /**
-     * Gets the email address.
+     * Establece el número de teléfono.
      *
-     * @return the email address
+     * @param phone el nuevo número de teléfono
+     */
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    /**
+     * Devuelve el correo electrónico.
+     *
+     * @return el correo electrónico
      */
     public String getEmail() {
         return email;
     }
 
     /**
-     * Returns a string representation of the address entry.
+     * Establece el correo electrónico.
      *
-     * @return a string containing all fields of the address entry
+     * @param email el nuevo correo electrónico
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * Devuelve una representación en cadena de la entrada de dirección.
+     *
+     * @return una cadena que contiene todos los campos de la entrada de dirección
      */
     @Override
     public String toString() {
-        return "First name ='" + firstName + '\'' +
-                ", last name='" + lastName + '\'' +
-                ", street ='" + street + '\'' +
-                ", state ='" + state + '\'' +
-                ", zip =" + zip +
-                ", phone ='" + phone + '\'' +
-                ", email ='" + email + '\'';
+        return "Nombre ='" + firstName + '\'' +
+                ", Apellido='" + lastName + '\'' +
+                ", Dirección ='" + street + '\'' +
+                ", Estado ='" + state + '\'' +
+                ", Código ZIP =" + zip +
+                ", Teléfono ='" + phone + '\'' +
+                ", Correo electrónico ='" + email + '\'';
     }
 }
