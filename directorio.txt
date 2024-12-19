@@ -1,32 +1,40 @@
-First Name: gerly
-Last Name: arteaga
-Street: nayarit
-State: VERACRUZ
-ZIP: 96980
-Phone: 9231283191
-Email: arteaga.bernal3@gmail.com
-
-First Name: rebeca
-Last Name: bernal
-Street: nayaritl
+First Name: angelica 
+Last Name: Gonzalez
+Street: miguel dorantes 
 State: veracruz
-ZIP: 48390
-Phone: 92310293829
-Email: arte.mqg@gmail.com
+ZIP: 91133
+Phone: 2281230489
+Email: angelica@gmail.com
 
-First Name: luis
-Last Name: perez
-Street: Tampicol
-State: Tamaulipas
-ZIP: 58493
-Phone: 4565192839
-Email: luis.qdfs@gmail.com
+First Name: pedro fernandez
+Last Name: Gonzalez
+Street: juan de la barrera 
+State: Nayarit 
+ZIP: 91123
+Phone: 9231283049
+Email: art@gmail.com
 
-First Name: jose
-Last Name: vergara
-Street: nose
-State: veracruz
-ZIP: 93480
-Phone: 912384938
-Email: jvergara@gmail.com
+First Name: gerly 
+Last Name: 
+Street: nayarit 
+State: peru
+ZIP: 23490
+Phone: 1238912038
+Email: qas�dfj@gmial.com
+
+First Name: Sergio checo
+Last Name: Perex 
+Street: pinga 
+State: Jalisco
+ZIP: 91138
+Phone: 9231283910
+Email: arteaga.bernal4@gmail.com
+
+First Name: julio 
+Last Name: Gutierrez
+Street: pinta
+State: Yucatan 
+ZIP: 29301
+Phone: 0923410293
+Email: qer@gmail.com
 
